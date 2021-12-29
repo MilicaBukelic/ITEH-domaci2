@@ -3,6 +3,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Tickets;
+use App\Models\User;
+use App\Models\Film;
+use App\Models\Genre;
+use App\Models\Director;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +19,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $film1=Film::factory()->create([
+            'naziv'=>"Titanic",
+            'genre_id'=>Genre::factory()->create([
+                'naziv'=>"Drama"
+            ])
+        ]);
+        $karte1=Tickets::factory(20)->create([
+            'film_id'=>$film1
+        ]);
+        $film2=Film::factory()->create([
+            'naziv'=>"Spiderman",
+            'genre_id'=>Genre::factory()->create([
+                'naziv'=>"Naucna fantastika"
+            ])
+        ]);
+        $karte2=Tickets::factory(20)->create([
+            'film_id'=>$film2
+        ]);
+        $karte3=Tickets::factory(20)->create([
+            'film_id'=>Film::factory()->create([
+                'naziv'=>"Montevideo, Bog te video",
+                'genre_id'=>Genre::factory()->create([
+                    'naziv'=>"Drama"
+                ])
+            ])
+        ]);
     }
 }

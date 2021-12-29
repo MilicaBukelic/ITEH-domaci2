@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProducersTable extends Migration
+class DropColumnReziserFromFilmsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateProducersTable extends Migration
      */
     public function up()
     {
-        Schema::create('producers', function (Blueprint $table) {
-            $table->id();
-            $table->string('ime');
-            $table->string('prezime');
-            $table->string('zemljePorekla');
-            $table->timestamps();
+        Schema::table('films', function (Blueprint $table) {
+            $table->dropColumn('reziser');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateProducersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producers');
+        Schema::table('films', function (Blueprint $table) {
+            //
+        });
     }
 }

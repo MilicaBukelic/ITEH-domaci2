@@ -15,4 +15,16 @@ class Film extends Model
         'radnja',
         'pocetakProjekcije'
     ];
+
+    public function genre(){
+        return $this->belongsTo(Genre::class);
+    }
+
+    public function director(){
+        return $this->belongsTo(Director::class);
+    }
+
+    public function ticket(){
+        return $this->belongsTo(Tickets::class,'film_id');
+    }
 }

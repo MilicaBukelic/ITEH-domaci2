@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Producer extends Model
+class Genre extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'naziv',
-        'reziser',
-        'radnja',
-        'pocetakProjekcije'
+        'opis'
     ];
+
+    public function films(){
+        return $this->hasMany(Film::class,'genre_id');
+    }
 }
