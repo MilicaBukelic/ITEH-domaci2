@@ -7,6 +7,7 @@ use App\Http\Controllers\FilmController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,5 @@ Route::get('/tickets',[TicketsController::class,'index']);
 Route::get('/tickets/{id}',[TicketsController::class,'show']);
 Route::delete('/tickets/{ticket}',[TicketsController::class,'delete']);
 
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);

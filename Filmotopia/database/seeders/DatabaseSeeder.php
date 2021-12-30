@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $genre1=Genre::factory()->create([
+            'naziv'=>"Drama"
+        ]);
         $film1=Film::factory()->create([
             'naziv'=>"Titanic",
-            'genre_id'=>Genre::factory()->create([
-                'naziv'=>"Drama"
-            ])
+            'genre_id'=>$genre1
         ]);
         $karte1=Tickets::factory(20)->create([
             'film_id'=>$film1
@@ -40,9 +41,7 @@ class DatabaseSeeder extends Seeder
         $karte3=Tickets::factory(20)->create([
             'film_id'=>Film::factory()->create([
                 'naziv'=>"Montevideo, Bog te video",
-                'genre_id'=>Genre::factory()->create([
-                    'naziv'=>"Drama"
-                ])
+                'genre_id'=>$genre1
             ])
         ]);
     }
